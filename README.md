@@ -1,6 +1,6 @@
 ## soundcloud-stream
 
-Stream any url at Soundcloud
+Stream any URL at Soundcloud
 
 ```js
 stream = require('soundcloud-stream')('client-id')
