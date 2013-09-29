@@ -4,7 +4,7 @@
   "description": "Stream Soundcloud URLs",
   "main": "index.js",
   "scripts": {
-    "test": "fox"
+    "test": "fox -b"
   },
   "dependencies": {
     "load-script": "0.0.2"
