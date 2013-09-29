@@ -3,4 +3,4 @@ fox = bin 'fox'
 all 'test'
 
 task 'test', '*.js', ->
-  fox '-b -t 5000'
+  fox '-b -t 20000'

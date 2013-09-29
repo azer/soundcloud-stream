@@ -1,23 +1,27 @@
 var loadScript = require("load-script");
+var sdkLoadQueue = require('pubsub')();
+var isSDKLoading = false;
+var isSDKLoaded = false;
 
 module.exports = init;
 
 function stream (url, callback) {
-  resolve(url, function (error, track) {
-    if (error) return callback(error);
+  loadSDK(function () {
+    resolve(url, function (error, track) {
+      if (error) return callback(error);
 
-    SC.stream("/tracks/" + track.id, function(sound){
-      callback(undefined, sound);
+      SC.stream("/tracks/" + track.id, function(sound){
+        callback(undefined, sound);
+      });
     });
   });
 }
 
-function init (id, callback) {
+function init (id) {
   loadSDK(function () {
     SC.initialize({
       client_id: id
     });
-    callback();
   });
 
   return stream;
@@ -30,5 +34,11 @@ function resolve (url, callback) {
 }
 
 function loadSDK (callback) {
-  loadScript('http://connect.soundcloud.com/sdk.js', callback);
+  if (isSDKLoaded) return callback();
+  sdkLoadQueue(callback);
+
+  if (isSDKLoading) return;
+  isSDKLoading = true;
+
+  loadScript('http://connect.soundcloud.com/sdk.js', sdkLoadQueue.publish);
 }
