@@ -1,0 +1,26 @@
+{
+  "name": "soundcloud-stream",
+  "version": "0.0.0",
+  "description": "Stream Soundcloud URLs",
+  "main": "index.js",
+  "scripts": {
+    "test": "fox"
+  },
+  "dependencies": {
+    "load-script": "0.0.2"
+  },
+  "devDependencies": {
+    "fox": "*"
+  },
+  "keywords": [
+    "song",
+    "player",
+    "soundcloud"
+  ],
+  "repository": {
+    "url": "git@github.com:azer/soundcloud-stream.git",
+    "type": "git"
+  },
+  "author": "Azer Koçulu <azer@kodfabrik.com>",
+  "license": "BSD"
+}
